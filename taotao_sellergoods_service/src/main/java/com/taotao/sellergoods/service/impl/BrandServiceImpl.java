@@ -11,8 +11,7 @@ import com.taotao.sellergoods.service.BrandService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class BrandServiceImpl implements BrandService {
@@ -69,5 +68,18 @@ public class BrandServiceImpl implements BrandService {
         }
         Page<TbBrand> page = (Page<TbBrand>) brandMapper.selectByExample(example);
         return new PageResult(page.getTotal(),page.getResult());
+    }
+
+    @Override
+    public List<Map> selectOptionList() {
+        List<Map> mapList = new ArrayList<>();
+        List<TbBrand> brandList = brandMapper.selectByExample(null);
+        for (TbBrand tbBrand : brandList) {
+            Map map = new HashMap();
+            map.put("id",tbBrand.getId());
+            map.put("text",tbBrand.getName());
+            mapList.add(map);
+        }
+        return mapList;
     }
 }

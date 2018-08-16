@@ -4,6 +4,7 @@ import com.taotao.entity.PageResult;
 import com.taotao.pojo.TbBrand;
 
 import java.util.List;
+import java.util.Map;
 
 public interface BrandService {
 
@@ -38,4 +39,9 @@ public interface BrandService {
      * 查询
      */
     PageResult search(TbBrand brand, int pageNum, int pageSize);
+
+    /**
+     * 品牌下拉数据
+     */
+    List<Map> selectOptionList();
 }

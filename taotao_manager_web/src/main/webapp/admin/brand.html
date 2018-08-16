@@ -11,109 +11,15 @@
     <link rel="stylesheet" href="../css/style.css">
 	<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
     <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+
 	<script src="../plugins/angularjs/angular.min.js"></script>
 	<script src="../plugins/angularjs/pagination.js"></script>
 	<link rel="stylesheet" href="../plugins/angularjs/pagination.css">
 
-	<script type="text/javascript">
-		var app = angular.module('taotao',['pagination']);
-		app.controller('brandController',function ($scope,$http) {
-		    $scope.findAll=function () {
-				$http.get('/brand/findAll.do').success(
-				    function(response){
-				        $scope.list=response;
-					}
-				)
-            }
-
-			$scope.reloadList=function () {
-		        //切换页码
-				$scope.search($scope.paginationConf.currentPage,$scope.paginationConf.itemsPerPage);
-            }
-            //分页控件配置
-			$scope.paginationConf={
-		        currentPage:1,
-                totalItems: 10,
-                itemsPerPage: 10,
-                perPageOptions: [10, 20, 30, 40, 50],
-				onChange:function () {
-					$scope.reloadList();
-                }
-			}
-			//分页
-			$scope.findPage=function (pageNum,pageSize){
-				$http.get('/brand/findPage.do?pageNum='+pageNum+'&pageSize='+pageSize).success(
-				    function(response){
-				        $scope.list=response.rows;
-				        $scope.paginationConf.totalItems=response.total;//更新总记录
-					}
-				)
-            }
-
-            //添加/更新
-			$scope.saveBrand=function () {
-			    var methodName='add';
-			    if($scope.entity.id != null){
-			        methodName='update';
-				}
-				$http.post('/brand/'+methodName+'.do',$scope.entity).success(
-				    function (response) {
-						if(response.success){
-						    //重新加载
-							$scope.reloadList();
-						}else{
-						    alert(response.message);
-						}
-                    }
-				)
-            }
-
-			//回显
-			$scope.findOne=function (id) {
-				$http.get('/brand/findOne.do?id='+id).success(
-				    function (response) {
-						$scope.entity=response;
-                    }
-				)
-            }
-
-            //更新复选框
-			$scope.selectIds=[];
-			$scope.updateSelection=function ($event, id) {
-				if($event.target.checked){
-				    $scope.selectIds.push(id);
-				}else{
-				    var idx=$scope.selectIds.indexOf(id);
-				    $scope.selectIds.splice(idx,1);
-				}
-            }
-            
-            //批量删除
-			$scope.dele=function () {
-				$http.get('/brand/delete.do?ids='+$scope.selectIds).success(
-				    function (response) {
-						if(response.success){
-						    $scope.reloadList();
-						}else{
-						    alert(response.message);
-						}
-                    }
-				)
-            }
-
-            //查询
-			$scope.searchEntity={};
-			$scope.search=function (pageNum, pageSize) {
-				$http.post('/brand/search.do?pageNum='+pageNum+'&pageSize='+pageSize,$scope.searchEntity).success(
-				    function (response) {
-						$scope.list=response.rows;
-						$scope.paginationConf.totalItems=response.total;
-                    }
-				)
-            }
-        })
-	</script>
-    
+	<script type="text/javascript" src="../js/base_pagination.js"></script>
+	<script type="text/javascript" src="../js/service/brandService.js"></script>
+	<script type="text/javascript" src="../js/controller/baseController.js"></script>
+	<script type="text/javascript" src="../js/controller/brandController.js"></script>
 </head>
 <body class="hold-transition skin-red sidebar-mini" ng-app="taotao" ng-controller="brandController" >
   <!-- .box-body -->
@@ -200,7 +106,7 @@
 			 </table>				
 		</div>
 		<div class="modal-footer">						
-			<button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="saveBrand()">保存</button>
+			<button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="save()">保存</button>
 			<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
 		</div>
 	  </div>

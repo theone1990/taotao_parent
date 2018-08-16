@@ -3,6 +3,8 @@ package com.taotao.mapper;
 import com.taotao.pojo.TbBrand;
 import com.taotao.pojo.TbBrandExample;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface TbBrandMapper {
