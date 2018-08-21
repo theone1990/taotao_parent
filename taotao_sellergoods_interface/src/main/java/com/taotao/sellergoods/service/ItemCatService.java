@@ -1,8 +1,9 @@
 package com.taotao.sellergoods.service;
-import java.util.List;
 
 import com.taotao.entity.PageResult;
 import com.taotao.pojo.TbItemCat;
+
+import java.util.List;
 
 /**
  * 服务层接口
@@ -58,5 +59,9 @@ public interface ItemCatService {
 	 * @return
 	 */
 	public PageResult findPage(TbItemCat itemCat, int pageNum, int pageSize);
-	
+
+	/**
+	 * 根据上级id返回列表
+	 */
+	public List<TbItemCat> findByParentId(Long parentId);
 }

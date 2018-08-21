@@ -1,15 +1,16 @@
-package com.taotao.manager.controller;
-import java.util.List;
+package com.taotao.shop.controller;
 
+import com.alibaba.dubbo.config.annotation.Reference;
+import com.taotao.entity.PageResult;
+import com.taotao.entity.Result;
+import com.taotao.pojo.TbItemCat;
+import com.taotao.sellergoods.service.ItemCatService;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.alibaba.dubbo.config.annotation.Reference;
-import com.taotao.pojo.TbItemCat;
-import com.taotao.sellergoods.service.ItemCatService;
 
-import com.taotao.entity.PageResult;
-import com.taotao.entity.Result;
+import java.util.List;
+
 /**
  * controller
  * @author Administrator
