@@ -95,7 +95,7 @@
 
     </dependencies>
     <build>
-        <finalName>pinyougou-shop-web</finalName>
+        <finalName>taotao_shop_web</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>

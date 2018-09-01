@@ -1,6 +1,7 @@
 package com.taotao.manager.controller;
 import java.util.List;
 
+import com.taotao.content.service.ContentCategoryService;
 import com.taotao.entity.PageResult;
 import com.taotao.entity.Result;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -8,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.taotao.pojo.TbContentCategory;
-import com.taotao.sellergoods.service.ContentCategoryService;
 
 /**
  * controller

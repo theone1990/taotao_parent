@@ -10,5 +10,5 @@
     <dubbo:application name="taotao_sellergoods"></dubbo:application>
     <dubbo:registry protocol="zookeeper" address="192.168.25.133" port="2181"></dubbo:registry>
     <dubbo:protocol name="dubbo" port="20880"></dubbo:protocol>
-    <dubbo:annotation package="com.taotao.sellergoods.service"></dubbo:annotation>
+    <dubbo:annotation package="com.taotao.sellergoods.service.impl"></dubbo:annotation>
 </beans>

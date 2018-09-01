@@ -15,6 +15,13 @@
     <module>taotao_sellergoods_service</module>
     <module>taotao_manager_web</module>
     <module>taotao_shop_web</module>
+      <module>taotao_content_interface</module>
+    <module>taotao_content_service</module>
+      <module>toatao_portal_web</module>
+      <module>taotao_solr_util</module>
+      <module>taotao_search_interface</module>
+      <module>taotao_search_service</module>
+      <module>taotao_search_web</module>
   </modules>
   <packaging>pom</packaging>
 
